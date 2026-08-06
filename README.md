@@ -1,8 +1,12 @@
-# Reinhold Regen – EVU Campaign Website
+# Reinhold Regen & Georg W. Busch – EVU-Kampagne
 
-Static multi-page site for GitHub and Vercel.
+Mehrseitige statische Kampagnenwebsite für GitHub und Vercel.
 
-## Vercel
-Import the GitHub repository, choose framework preset `Other`, leave build command and output directory empty, and deploy.
+## Deployment
+1. Inhalt dieses Ordners in ein GitHub-Repository hochladen.
+2. Repository in Vercel importieren.
+3. Framework Preset: `Other`.
+4. Build Command und Output Directory leer lassen.
+5. Deploy.
 
-The registration form stores test entries in browser localStorage. For shared registrations, connect it to a database or Vercel serverless API.
+Die Registrierung speichert Einträge zunächst lokal im Browser. Für eine zentrale Datenbank ist später eine Vercel-API erforderlich.
