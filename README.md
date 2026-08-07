@@ -103,3 +103,7 @@ Seiten desselben Tabs erscheint es deshalb nicht erneut. Wird der Tab bzw. die
 Browsersitzung beendet, wird der Sessionstatus automatisch verworfen.
 
 Zum Testen kann an jede URL `?discord=1` angehängt werden.
+
+
+## Parteileitung – Dr. Harald Schmidt Kohlb
+`parteileitung.html` führt nun Dr. Harald Schmidt Kohlb als Mitglied des Parteivorstands, Bundestagskandidaten und bevorzugten Kandidaten für den Vorsitz einer künftigen BÜNDNIS-Bundestagsfraktion. Sein Profil ist direkt über `parteileitung.html#kohlb` erreichbar.
