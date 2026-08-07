@@ -82,16 +82,59 @@ document.querySelectorAll(rippleTargets).forEach(el=>{
   });
 });
 
-// Discord welcome prompt (once per browser session)
+// Discord welcome prompt — site-wide, once per tab/session
 function initDiscordGate(){
- const gate=document.getElementById('discordGate');if(!gate)return;
- let seen=false;const force=new URLSearchParams(location.search).get('discord')==='1';try{seen=sessionStorage.getItem('rbDiscordPromptSeenV2')==='1'}catch{};if(force)seen=false
- if(!seen){setTimeout(()=>{gate.hidden=false;requestAnimationFrame(()=>gate.classList.add('open'))},650)}
- const close=()=>{gate.classList.remove('open');setTimeout(()=>gate.hidden=true,220);try{sessionStorage.setItem('rbDiscordPromptSeenV2','1')}catch{}};
- document.getElementById('discordAlready')?.addEventListener('click',close);document.getElementById('discordGateClose')?.addEventListener('click',close);
- document.getElementById('discordJoin')?.addEventListener('click',close);
- gate.addEventListener('click',e=>{if(e.target===gate)close()});
- document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!gate.hidden)close()});
+  const force=new URLSearchParams(location.search).get('discord')==='1';
+  let seen=false;
+  try{seen=sessionStorage.getItem('rbDiscordPromptSeenV3')==='1'}catch{}
+  if(seen&&!force)return;
+
+  let gate=document.getElementById('discordGate');
+
+  // Create the popup on pages that don't already include its markup.
+  if(!gate){
+    gate=document.createElement('div');
+    gate.className='discord-gate';
+    gate.id='discordGate';
+    gate.hidden=true;
+    gate.innerHTML=`
+      <div class="discord-gate-card" role="dialog" aria-modal="true" aria-labelledby="discordGateTitle">
+        <button class="discord-gate-close" id="discordGateClose" type="button" aria-label="Fenster schließen">×</button>
+        <div class="discord-gate-image"></div>
+        <div class="discord-gate-shade"></div>
+        <div class="discord-gate-copy">
+          <span>BÜNDNIS DIGITAL</span>
+          <h2 id="discordGateTitle">Sind Sie schon auf unserem Discord?</h2>
+          <p>Dort treffen sich Unterstützer, Mitglieder und Interessierte. Veranstaltungen und wichtige Hinweise landen häufig zuerst dort.</p>
+          <div class="discord-gate-actions">
+            <button type="button" id="discordAlready">Ja, ich bin schon dabei</button>
+            <a href="https://discord.gg/SwScJprsw6" target="_blank" rel="noopener" id="discordJoin">Noch nicht – jetzt beitreten</a>
+          </div>
+        </div>
+      </div>`;
+    document.body.appendChild(gate);
+  }
+
+  const close=()=>{
+    gate.classList.remove('open');
+    setTimeout(()=>gate.hidden=true,220);
+  };
+
+  document.getElementById('discordAlready')?.addEventListener('click',close);
+  document.getElementById('discordGateClose')?.addEventListener('click',close);
+  document.getElementById('discordJoin')?.addEventListener('click',close);
+  gate.addEventListener('click',e=>{if(e.target===gate)close()});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!gate.hidden)close()});
+
+  setTimeout(()=>{
+    gate.hidden=false;
+    // Mark as seen as soon as it is displayed. sessionStorage persists
+    // while navigating in this tab and clears when that tab/session ends.
+    if(!force){
+      try{sessionStorage.setItem('rbDiscordPromptSeenV3','1')}catch{}
+    }
+    requestAnimationFrame(()=>gate.classList.add('open'));
+  },650);
 }
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',initDiscordGate,{once:true});
 else initDiscordGate();

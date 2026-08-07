@@ -93,3 +93,13 @@ Die Tabellen `party_events` und `state_chapters` werden automatisch beim ersten 
 
 Open-Graph-Metadaten verwenden derzeit `https://regen-alpha.vercel.app` als Basisadresse.
 Nach Kauf einer eigenen Domain sollte diese Basisadresse in den HTML-Dateien ersetzt werden.
+
+## Discord-Popup auf allen Seiten
+
+`assets/app.js` erzeugt das Discord-Popup jetzt selbst auf jeder HTML-Seite.
+Es erscheint ca. 650 ms nach dem ersten Seitenaufruf in einem Tab. In dem Moment
+wird `rbDiscordPromptSeenV3` in `sessionStorage` gesetzt. Beim Wechsel auf andere
+Seiten desselben Tabs erscheint es deshalb nicht erneut. Wird der Tab bzw. die
+Browsersitzung beendet, wird der Sessionstatus automatisch verworfen.
+
+Zum Testen kann an jede URL `?discord=1` angehängt werden.
