@@ -1,7 +1,7 @@
 const {sql,ensureSchema,requireUser}=require('../lib/auth');
 const clean=(v,max)=>String(v??'').trim().slice(0,max);
 function validDate(v){const d=new Date(v);return Number.isNaN(d.getTime())?null:d.toISOString()}
-module.exports=async(req,res)=>{
+module.exports=async(req,res)=>{res.setHeader('Content-Type','application/json; charset=utf-8');
  try{
   await ensureSchema();const q=sql();
   if(req.method==='GET'){

@@ -15,16 +15,20 @@ async function loadNews(){
  }catch(e){current.innerHTML=`<div class="empty-state">${esc(e.message)}</div>`}
 }
 async function loadEvents(){
- const upcoming=document.getElementById('upcomingEvents'),past=document.getElementById('pastEvents');if(!upcoming)return;
+ const upcoming=document.getElementById('upcomingEvents'),past=document.getElementById('pastEvents'),home=document.getElementById('homeNextEvent');
+ if(!upcoming&&!home)return;
  try{
   const {events=[]}=await getJSON('/api/events');const now=Date.now();
   const next=events.filter(e=>new Date(e.starts_at).getTime()>=now);
   const old=events.filter(e=>new Date(e.starts_at).getTime()<now).reverse();
   const card=e=>`<article class="event-card"><div class="event-date"><strong>${new Date(e.starts_at).toLocaleDateString('de-DE',{day:'2-digit'})}</strong><span>${new Date(e.starts_at).toLocaleDateString('de-DE',{month:'short'}).replace('.','')}</span></div><div><time>${fmtDate(e.starts_at)}</time><h3>${esc(e.title)}</h3><p class="event-place">${esc(e.location)}${e.state_code?' · '+esc(e.state_code):''}</p>${e.description?`<p>${esc(e.description)}</p>`:''}${e.link?`<a class="more" href="${esc(e.link)}" target="_blank" rel="noopener">Weitere Informationen →</a>`:''}</div></article>`;
-  upcoming.innerHTML=next.length?next.map(card).join(''):'<div class="empty-state">Zurzeit sind noch keine kommenden Veranstaltungen eingetragen.</div>';
+  if(upcoming)upcoming.innerHTML=next.length?next.map(card).join(''):'<div class="empty-state">Zurzeit sind noch keine kommenden Veranstaltungen eingetragen.</div>';
   if(past)past.innerHTML=old.length?old.map(card).join(''):'<div class="empty-state">Noch keine vergangenen Veranstaltungen im Archiv.</div>';
-  const home=document.getElementById('homeNextEvent');if(home){home.innerHTML=next.length?`<strong>${esc(next[0].title)}</strong><span>${fmtDate(next[0].starts_at)} · ${esc(next[0].location)}</span>`:'<strong>Neue Termine folgen</strong><span>Veranstaltungen werden hier bekanntgegeben.</span>'}
- }catch(e){upcoming.innerHTML=`<div class="empty-state">${esc(e.message)}</div>`}
+  if(home){home.innerHTML=next.length?`<strong>${esc(next[0].title)}</strong><span>${fmtDate(next[0].starts_at)} · ${esc(next[0].location)}</span>`:'<strong>Neue Termine folgen</strong><span>Veranstaltungen werden hier bekanntgegeben.</span>'}
+ }catch(e){
+   if(upcoming)upcoming.innerHTML=`<div class="empty-state">${esc(e.message)}</div>`;
+   if(home)home.innerHTML='<strong>Termine derzeit nicht abrufbar</strong><span>Bitte später erneut versuchen.</span>';
+ }
 }
 async function loadStates(){
  const grid=document.getElementById('stateGrid');if(!grid)return;

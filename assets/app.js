@@ -83,13 +83,15 @@ document.querySelectorAll(rippleTargets).forEach(el=>{
 });
 
 // Discord welcome prompt (once per browser session)
-(()=>{
+function initDiscordGate(){
  const gate=document.getElementById('discordGate');if(!gate)return;
- let seen=false;try{seen=sessionStorage.getItem('rbDiscordPromptSeen')==='1'}catch{}
+ let seen=false;const force=new URLSearchParams(location.search).get('discord')==='1';try{seen=sessionStorage.getItem('rbDiscordPromptSeenV2')==='1'}catch{};if(force)seen=false
  if(!seen){setTimeout(()=>{gate.hidden=false;requestAnimationFrame(()=>gate.classList.add('open'))},650)}
- const close=()=>{gate.classList.remove('open');setTimeout(()=>gate.hidden=true,220);try{sessionStorage.setItem('rbDiscordPromptSeen','1')}catch{}};
- document.getElementById('discordAlready')?.addEventListener('click',close);
+ const close=()=>{gate.classList.remove('open');setTimeout(()=>gate.hidden=true,220);try{sessionStorage.setItem('rbDiscordPromptSeenV2','1')}catch{}};
+ document.getElementById('discordAlready')?.addEventListener('click',close);document.getElementById('discordGateClose')?.addEventListener('click',close);
  document.getElementById('discordJoin')?.addEventListener('click',close);
  gate.addEventListener('click',e=>{if(e.target===gate)close()});
  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!gate.hidden)close()});
-})();
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',initDiscordGate,{once:true});
+else initDiscordGate();

@@ -1,6 +1,6 @@
 const {sql,ensureSchema,requireUser}=require('../lib/auth');
 const clean=(v,max)=>String(v??'').trim().slice(0,max);
-module.exports=async(req,res)=>{
+module.exports=async(req,res)=>{res.setHeader('Content-Type','application/json; charset=utf-8');
  try{
   await ensureSchema();const q=sql();
   if(req.method==='GET'){

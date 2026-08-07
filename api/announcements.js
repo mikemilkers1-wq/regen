@@ -1,7 +1,7 @@
 const {sql,ensureSchema,requireUser}=require('../lib/auth');
 function clean(v,max){return String(v??'').trim().slice(0,max)}
 function validImages(value){if(!Array.isArray(value)||value.length>5)return null;let total=0;const out=[];for(const raw of value){const image=String(raw||'');if(!(image.startsWith('data:image/jpeg;base64,')||image.startsWith('data:image/png;base64,')||image.startsWith('data:image/webp;base64,')||image.startsWith('https://')))return null;total+=image.length;if(image.length>950000||total>3800000)return null;out.push(image)}return out}
-module.exports=async(req,res)=>{try{await ensureSchema();const q=sql();if(req.method==='GET'){
+module.exports=async(req,res)=>{res.setHeader('Content-Type','application/json; charset=utf-8');try{await ensureSchema();const q=sql();if(req.method==='GET'){
 const history=String(req.query?.history||'')==='1';
 if(history){
  const rows=await q`SELECT a.id,a.title,a.body,a.images,a.active,a.created_at,e.display_name AS author
