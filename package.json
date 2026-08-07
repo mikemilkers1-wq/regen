@@ -1,0 +1,14 @@
+{
+  "name": "regen-gush-campaign",
+  "private": true,
+  "version": "2.0.0",
+  "type": "commonjs",
+  "dependencies": {
+    "@neondatabase/serverless": "^1.0.1",
+    "bcryptjs": "^3.0.2",
+    "pdfkit": "^0.16.0"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

@@ -1,0 +1,48 @@
+<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>BÜNDNIS-Zentrale | Regen–Gush</title><link rel="stylesheet" href="assets/style.css">
+  <link rel="icon" href="assets/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/favicon-192.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+</head><body class="portal-body page-ready"><header class="portal-header"><div class="container portal-nav"><a class="portal-brand" href="employee.html"><span class="brandmark">R</span><span>BÜNDNIS-Zentrale</span></a><div class="portal-actions"><span id="userLabel">Konto wird geladen …</span><a class="button light" href="index.html">Öffentliche Seite</a><button class="button primary" id="logoutButton">Abmelden</button></div></div></header><main class="portal-shell"><div class="container portal-grid"><aside class="portal-sidebar"><button class="active" data-panel="overview">Übersicht</button><button data-panel="applications">Bewerbungen</button><button class="manager-only" data-panel="announcements" hidden>Bekanntmachung</button><button class="manager-only" data-panel="events" hidden>Termine</button><button class="manager-only" data-panel="states" hidden>Landesverbände</button><button class="manager-only" data-panel="employees" hidden>Mitarbeiterkonten</button></aside><div class="portal-main"><section class="portal-panel active" id="panel-overview"><h1 class="portal-title">BÜNDNIS-Übersicht</h1><p class="portal-subtitle">Interne Arbeitsoberfläche des Republikanischen Bündnisses.</p><div class="stats-grid"><div class="stat-card"><strong id="statTotal">–</strong><span>Gesamte Anfragen</span></div><div class="stat-card"><strong id="statNew">–</strong><span>Neue Anfragen</span></div><div class="stat-card"><strong id="statAccepted">–</strong><span>Aufgenommen</span></div></div><div class="portal-card"><h2 class="portal-title" style="font-size:1.55rem">Neueste Eingänge</h2><div id="latestApplications" class="application-list"><div class="empty-state">Anfragen werden geladen …</div></div></div></section><section class="portal-panel" id="panel-applications"><h1 class="portal-title">Mitmach-Anfragen</h1><p class="portal-subtitle">Alle über die öffentliche Mitmachen-Seite eingegangenen Registrierungen.</p><div class="toolbar"><div><input id="applicationSearch" placeholder="Name, Discord oder Ort suchen"><select id="applicationFilter"><option value="">Alle Status</option><option value="new">Neu</option><option value="contacted">Kontaktiert</option><option value="accepted">Aufgenommen</option><option value="rejected">Abgelehnt</option></select></div><button class="small-btn" id="refreshApplications">Aktualisieren</button></div><div id="applicationList" class="application-list"><div class="empty-state">Anfragen werden geladen …</div></div></section><section class="portal-panel manager-only" id="panel-announcements" hidden>
+  <h1 class="portal-title">Bekanntmachung auf der Startseite</h1>
+  <p class="portal-subtitle">Eine neue Bekanntmachung ersetzt die bisher sichtbare Meldung. Die beiden festen Verweise zum Programm und zur Unterstützung bleiben immer erhalten.</p>
+  <div class="portal-card" style="margin-bottom:22px">
+    <h2 class="portal-title" style="font-size:1.55rem">Derzeit sichtbar</h2>
+    <div id="currentAnnouncement" class="announcement-admin-preview"><div class="empty-state">Bekanntmachung wird geladen …</div></div>
+  </div>
+  <div class="portal-card">
+    <h2 class="portal-title" style="font-size:1.55rem">Neue Bekanntmachung veröffentlichen</h2>
+    <form id="announcementForm">
+      <div class="formgrid">
+        <div class="field full"><label>Überschrift</label><input name="title" maxlength="140" required placeholder="Überschrift der Bekanntmachung"></div>
+        <div class="field full"><label>Text</label><textarea name="body" maxlength="5000" required placeholder="Text der Bekanntmachung"></textarea></div>
+        <div class="field full"><label>Bilder (bis zu fünf)</label><input id="announcementImages" name="images" type="file" accept="image/png,image/jpeg,image/webp" multiple><small>Die Bilder werden vor dem Hochladen automatisch verkleinert. Bei mehreren Bildern wechselt die Startseite selbstständig zwischen ihnen.</small></div>
+        <div class="field full"><div id="announcementImagePreview" class="announcement-upload-preview"></div></div>
+        <div class="field full"><button class="button primary" type="submit">Bekanntmachung veröffentlichen</button><div id="announcementMessage" class="status"></div></div>
+      </div>
+    </form>
+  </div>
+</section><section class="portal-panel manager-only" id="panel-events" hidden>
+<h1 class="portal-title">Termine & Veranstaltungen</h1><p class="portal-subtitle">Neue öffentliche Termine erscheinen sofort auf der Veranstaltungsseite.</p>
+<div class="portal-card" style="margin-bottom:22px"><h2 class="portal-title" style="font-size:1.55rem">Neuen Termin eintragen</h2>
+<form id="eventForm"><div class="formgrid">
+<div class="field full"><label>Titel</label><input name="title" required maxlength="160"></div>
+<div class="field"><label>Beginn</label><input name="startsAt" type="datetime-local" required></div>
+<div class="field"><label>Ende (optional)</label><input name="endsAt" type="datetime-local"></div>
+<div class="field"><label>Ort</label><input name="location" required maxlength="180"></div>
+<div class="field"><label>Bundesland</label><select name="stateCode" id="eventStateSelect"><option value="">Bundesweit / keine Angabe</option></select></div>
+<div class="field full"><label>Beschreibung</label><textarea name="description" maxlength="5000"></textarea></div>
+<div class="field full"><label>Externer Link (optional)</label><input name="link" type="url" maxlength="500" placeholder="https://..."></div>
+<div class="field full"><button class="button primary" type="submit">Termin veröffentlichen</button><div id="eventMessage" class="status"></div></div>
+</div></form></div>
+<div class="portal-card"><h2 class="portal-title" style="font-size:1.55rem">Eingetragene Termine</h2><div id="eventAdminList" class="event-admin-list"><div class="empty-state">Termine werden geladen …</div></div></div>
+</section><section class="portal-panel manager-only" id="panel-states" hidden>
+<h1 class="portal-title">Landesverbände</h1><p class="portal-subtitle">Vorsitzende und Ansprechpartner der 16 Landesverbände verwalten.</p>
+<div class="portal-card"><form id="stateForm"><div class="formgrid">
+<div class="field full"><label>Landesverband</label><select id="stateAdminSelect" name="code" required></select></div>
+<div class="field"><label>Landesvorsitz</label><input name="chairman" id="stateChairman" placeholder="Leer lassen, wenn nicht besetzt"></div>
+<div class="field"><label>Stellvertretung</label><input name="deputy" id="stateDeputy" placeholder="Leer lassen, wenn nicht besetzt"></div>
+<div class="field full"><label>Discord / Kontakt-Link</label><input name="discord" id="stateDiscord" placeholder="https://discord.gg/..."></div>
+<div class="field full"><label>Hinweis</label><textarea name="note" id="stateNote" maxlength="1200" placeholder="Optionaler kurzer Hinweis zum Landesverband"></textarea></div>
+<div class="field full"><button class="button primary" type="submit">Landesverband speichern</button><div id="stateMessage" class="status"></div></div>
+</div></form></div></section><section class="portal-panel manager-only" id="panel-employees" hidden><h1 class="portal-title">Mitarbeiterkonten</h1><p class="portal-subtitle">Nur der BÜNDNIS-Manager kann Konten erstellen oder deaktivieren.</p><div class="portal-card" style="margin-bottom:22px"><h2 class="portal-title" style="font-size:1.55rem">Neues Konto</h2><form id="employeeForm"><div class="formgrid"><div class="field"><label>Name</label><input name="displayName" required></div><div class="field"><label>Benutzername</label><input name="username" required></div><div class="field"><label>Passwort</label><input name="password" type="password" minlength="10" required></div><div class="field"><label>Rolle</label><select name="role"><option value="employee">BÜNDNIS-Mitarbeiter</option><option value="manager">BÜNDNIS-Manager</option></select></div><div class="field full"><button class="button primary" type="submit">Konto erstellen</button><div id="employeeMessage" class="status"></div></div></div></form></div><div class="portal-card"><table class="employee-table"><thead><tr><th>Name</th><th>Benutzername</th><th>Rolle</th><th>Status</th><th>Aktion</th></tr></thead><tbody id="employeeRows"></tbody></table></div></section></div></div></main><script src="assets/employee.js"></script></body></html>

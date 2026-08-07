@@ -1,0 +1,3 @@
+const form=document.getElementById("loginForm"),message=document.getElementById("loginMessage");
+(async()=>{try{const r=await fetch('/api/me');if(r.ok)location.replace('/employee.html')}catch{}})();
+form.addEventListener('submit',async e=>{e.preventDefault();message.textContent='Anmeldung wird geprüft …';const button=form.querySelector('button');button.disabled=true;try{const data=Object.fromEntries(new FormData(form).entries());const r=await fetch('/api/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});const result=await r.json();if(!r.ok)throw new Error(result.error||'Anmeldung fehlgeschlagen.');location.replace('/employee.html')}catch(err){message.textContent=err.message}finally{button.disabled=false}});
