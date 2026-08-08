@@ -107,3 +107,14 @@ Zum Testen kann an jede URL `?discord=1` angehängt werden.
 
 ## Parteileitung – Dr. Harald Schmidt Kohlb
 `parteileitung.html` führt nun Dr. Harald Schmidt Kohlb als Mitglied des Parteivorstands, Bundestagskandidaten und bevorzugten Kandidaten für den Vorsitz einer künftigen BÜNDNIS-Bundestagsfraktion. Sein Profil ist direkt über `parteileitung.html#kohlb` erreichbar.
+
+## Aktueller Medienstand
+- Dr. Harald Schmidt Kohlb verwendet jetzt das vom Nutzer bereitgestellte Bild `assets/harald-kohlb.jpg`.
+- Alle drei Rede-Videos auf `reden.html` verwenden vorläufig `https://www.youtube.com/watch?v=dQw4w9WgXcQ`.
+
+## Parteileitung – Siegfried Winter
+- Mitglied des Parteivorstands
+- Mitglied des Deutschen Bundestages
+- Mandat stammt aus seiner früheren Zugehörigkeit zur NVP-Fraktion; er hat diese verlassen und gehört nun dem BÜNDNIS an
+- lokales Portrait: `assets/siegfried-winter.png`
+- Profilanker: `parteileitung.html#winter`
