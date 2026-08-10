@@ -140,3 +140,13 @@ Kandidaten/Funktionsträger nicht automatisch offizielle Parteipositionen darste
 
 Diego Matteoti verwendet `assets/diego-matteoti.jpg`.
 Bildquelle: Gordon Correll / gdcgraphics, CC BY-SA 2.0, via Wikimedia Commons.
+
+
+## Bundestagskandidat / MdB – Remo Rubio Springer
+- Mitglied des Republikanischen Bündnisses
+- Mitglied des Deutschen Bundestages
+- früher BSV-Mitglied
+- weiterhin Mitglied der BSV-Bundestagsfraktion
+- Rechtsanwalt
+- Kandidat des BÜNDNIS für den Deutschen Bundestag
+- Profilanker: `bundestagskandidaten.html#rubio-springer`
