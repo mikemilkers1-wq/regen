@@ -150,3 +150,17 @@ Bildquelle: Gordon Correll / gdcgraphics, CC BY-SA 2.0, via Wikimedia Commons.
 - Rechtsanwalt
 - Kandidat des BÜNDNIS für den Deutschen Bundestag
 - Profilanker: `bundestagskandidaten.html#rubio-springer`
+
+## Republikaner im Bundestag
+Neue Seite: `republikaner-im-bundestag.html`
+
+Bundestagsgruppe: `Gruppe, Republikaner im Bundestag`
+
+Aktuelle BÜNDNIS-Mitglieder mit Bundestagsmandat:
+- Dr. Harald Schmidt Kohlb
+- Siegfried Winter
+- Remo Rubio Springer
+
+Weitere Änderungen:
+- Kohlb wird nun überall als bereits amtierendes Mitglied des Deutschen Bundestages geführt.
+- Remo Rubio Springer wurde in die Parteileitung aufgenommen: Rechtsexperte, Rechtsanwalt und starker Kommunikator.
