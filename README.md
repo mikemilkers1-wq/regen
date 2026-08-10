@@ -118,3 +118,25 @@ Zum Testen kann an jede URL `?discord=1` angehängt werden.
 - Mandat stammt aus seiner früheren Zugehörigkeit zur NVP-Fraktion; er hat diese verlassen und gehört nun dem BÜNDNIS an
 - lokales Portrait: `assets/siegfried-winter.png`
 - Profilanker: `parteileitung.html#winter`
+
+## Parteileitung – Phillip Daubner
+- Bundestagskandidat des Republikanischen Bündnisses
+- Portrait: `assets/phillip-daubner.png`
+- Profilanker: `parteileitung.html#daubner`
+
+## Bundestagskandidaten
+Neue Seite: `bundestagskandidaten.html`
+
+Aktuell aufgeführt:
+- Dr. Harald Schmidt Kohlb — Bundestagskandidat und Parteivorstand
+- Phillip Daubner — Bundestagskandidat
+- Diego Matteoti — Bundestagskandidat
+
+Daubner wird nicht mehr unter Parteileitung geführt, da für ihn kein Parteiamt angegeben wurde.
+Kohlb bleibt sowohl in der Parteileitung als auch auf der Kandidatenseite.
+
+Auf allen öffentlichen Seiten erscheint ein kurzer Hinweis, dass persönliche Aussagen einzelner
+Kandidaten/Funktionsträger nicht automatisch offizielle Parteipositionen darstellen.
+
+Diego Matteoti verwendet `assets/diego-matteoti.jpg`.
+Bildquelle: Gordon Correll / gdcgraphics, CC BY-SA 2.0, via Wikimedia Commons.

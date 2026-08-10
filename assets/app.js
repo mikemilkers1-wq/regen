@@ -138,3 +138,18 @@ function initDiscordGate(){
 }
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',initDiscordGate,{once:true});
 else initDiscordGate();
+
+
+// Public-site candidate statement notice
+function initCandidateStatementNotice(){
+  if(document.body.classList.contains('login-page')||document.body.classList.contains('portal-body'))return;
+  if(document.querySelector('.candidate-statement-notice'))return;
+  const bar=document.createElement('div');
+  bar.className='candidate-statement-notice';
+  bar.innerHTML='<div class="container"><strong>Hinweis:</strong> Persönliche Aussagen einzelner Kandidaten oder Funktionsträger sind nicht automatisch offizielle Positionen des BÜNDNIS. Maßgeblich sind das Parteiprogramm und offizielle Beschlüsse.</div>';
+  const top=document.querySelector('.topline');
+  if(top)top.insertAdjacentElement('afterend',bar);
+  else document.body.prepend(bar);
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',initCandidateStatementNotice,{once:true});
+else initCandidateStatementNotice();
