@@ -159,31 +159,35 @@ else initCandidateStatementNotice();
 function initCandidateProfileLinks(){
   if(document.body.classList.contains('login-page')||document.body.classList.contains('portal-body'))return;
   const people={
-    'Dr. Harald Schmidt Kohlb':'harald-schmidt-kohlb',
-    'Phillip Daubner':'phillip-daubner',
-    'Diego Matteoti':'diego-matteoti',
-    'Remo Rubio Springer':'remo-rubio-springer'
+    'Reinhold Regen':'personen/reinhold-regen.html',
+    'Georg B. Gush':'personen/georg-b-gush.html',
+    'Micheal Romney':'personen/micheal-romney.html',
+    'Siegfried Winter':'personen/siegfried-winter.html',
+    'Dr. Harald Schmidt Kohlb':'kandidaten/harald-schmidt-kohlb.html',
+    'Phillip Daubner':'kandidaten/phillip-daubner.html',
+    'Diego Matteoti':'kandidaten/diego-matteoti.html',
+    'Remo Rubio Springer':'kandidaten/remo-rubio-springer.html'
   };
-  const own=document.body.dataset.candidatePage||'';
+  const own=(document.body.dataset.candidatePage||document.body.dataset.politicianPage||'');
   const path=location.pathname;
-  const prefix=(path.includes('/programm/')||path.includes('/kandidaten/'))?'../':'';
+  const prefix=(path.includes('/programm/')||path.includes('/kandidaten/')||path.includes('/personen/'))?'../':'';
   const walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,{acceptNode(node){
     const p=node.parentElement;if(!p)return NodeFilter.FILTER_REJECT;
     if(p.closest('a,script,style,textarea,option,button'))return NodeFilter.FILTER_REJECT;
-    return Object.keys(people).some(n=>node.nodeValue.includes(n)&&people[n]!==own)?NodeFilter.FILTER_ACCEPT:NodeFilter.FILTER_REJECT;
+    return Object.keys(people).some(n=>node.nodeValue.includes(n)&&!people[n].includes('/'+own+'.html'))?NodeFilter.FILTER_ACCEPT:NodeFilter.FILTER_REJECT;
   }});
   const nodes=[];while(walker.nextNode())nodes.push(walker.currentNode);
   nodes.forEach(node=>{
     let parts=[node.nodeValue];
-    Object.entries(people).forEach(([name,slug])=>{
-      if(slug===own)return;
+    Object.entries(people).forEach(([name,route])=>{
+      if(route.includes('/'+own+'.html'))return;
       const next=[];
       parts.forEach(part=>{
         if(typeof part!=='string'){next.push(part);return;}
         const chunks=part.split(name);
         chunks.forEach((chunk,i)=>{
           if(chunk)next.push(chunk);
-          if(i<chunks.length-1){const a=document.createElement('a');a.href=prefix+'kandidaten/'+slug+'.html';a.className='candidate-name-link';a.textContent=name;next.push(a);}
+          if(i<chunks.length-1){const a=document.createElement('a');a.href=prefix+route;a.className='candidate-name-link';a.textContent=name;next.push(a);}
         });
       });
       parts=next;

@@ -194,3 +194,17 @@ Wahlkampfbilder:
 - `assets/campaign/rubio-kohlb-fight.png` – gemeinsames Motiv Rubio Springer / Kohlb
 
 Die vorher nur 230px breite `.side-chevrons`-Textur wurde auf volle Abschnittsbreite erweitert und nach rechts weich ausgeblendet.
+
+## Profile aller wichtigen Politiker
+Zusätzliche Profilseiten:
+- `personen/reinhold-regen.html`
+- `personen/georg-b-gush.html`
+- `personen/micheal-romney.html`
+- `personen/siegfried-winter.html`
+
+Zusammen mit den vorhandenen Kandidatenprofilen haben damit alle derzeitigen wichtigen Politiker eigene Detailseiten.
+Namen werden auf öffentlichen Seiten automatisch auf das jeweilige Profil verlinkt.
+
+## Hintergrundtextur
+Die alte `.side-chevrons`-Dekoration wurde vollständig deaktiviert.
+Die diagonalen Linien sind nun echte `background-image`-Layer der betroffenen hellen Abschnitte und füllen deshalb immer die komplette Breite und Höhe des Abschnitts.
