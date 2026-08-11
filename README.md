@@ -164,3 +164,33 @@ Aktuelle BÜNDNIS-Mitglieder mit Bundestagsmandat:
 Weitere Änderungen:
 - Kohlb wird nun überall als bereits amtierendes Mitglied des Deutschen Bundestages geführt.
 - Remo Rubio Springer wurde in die Parteileitung aufgenommen: Rechtsexperte, Rechtsanwalt und starker Kommunikator.
+
+
+## Zitatquellen / Real-person references
+The displayed German quotations are translations of documented quotations by the real-world visual/persona references:
+- Reinhold Regen → Ronald Reagan: “Freedom is one of the deepest and noblest aspirations of the human spirit.” (1985 Inaugural Address)
+- Georg B. Gush → George W. Bush: “We believe that human fulfillment and excellence come in the responsible exercise of liberty.” (2003 remarks)
+- Micheal Romney → Mitt Romney: “It is a great honor. It is an even greater responsibility.” (2012 Republican National Convention)
+- Dr. Harald Schmidt Kohlb → Richard Nixon: “A man is not finished when he is defeated. He is finished when he quits.”
+- Siegfried Winter → Robert F. Kennedy: excerpt from the 1966 Day of Affirmation address (“...sends forth a tiny ripple of hope...”)
+- Phillip Daubner → Dwight D. Eisenhower: “A people that values its privileges above its principles soon loses both.” (1953 Inaugural Address)
+- Diego Matteoti → James Gandolfini: “Don't try to please them. Do it for yourself.” (2004 interview)
+- Remo Rubio Springer → Marco Rubio: excerpt concerning respect for constitutional rights, freedom of speech, association and assembly (2026 State Department remarks)
+
+Do not replace these with invented quotes unless explicitly requested.
+
+
+## Eigene Bundestagskandidaten-Profile
+Neue, nicht in der Hauptnavigation einzeln gelistete Profilseiten:
+- `kandidaten/harald-schmidt-kohlb.html`
+- `kandidaten/phillip-daubner.html`
+- `kandidaten/diego-matteoti.html`
+- `kandidaten/remo-rubio-springer.html`
+
+Kandidatennamen werden auf öffentlichen Seiten automatisch mit den Profilen verlinkt. Die jeweilige eigene Profilseite verlinkt den eigenen Namen nicht erneut.
+
+Wahlkampfbilder:
+- `assets/campaign/rubio-jugend.png` – Rubio Springer
+- `assets/campaign/rubio-kohlb-fight.png` – gemeinsames Motiv Rubio Springer / Kohlb
+
+Die vorher nur 230px breite `.side-chevrons`-Textur wurde auf volle Abschnittsbreite erweitert und nach rechts weich ausgeblendet.

@@ -153,3 +153,42 @@ function initCandidateStatementNotice(){
 }
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',initCandidateStatementNotice,{once:true});
 else initCandidateStatementNotice();
+
+
+// Link exact Bundestagskandidaten names to their detail pages wherever they appear in public text.
+function initCandidateProfileLinks(){
+  if(document.body.classList.contains('login-page')||document.body.classList.contains('portal-body'))return;
+  const people={
+    'Dr. Harald Schmidt Kohlb':'harald-schmidt-kohlb',
+    'Phillip Daubner':'phillip-daubner',
+    'Diego Matteoti':'diego-matteoti',
+    'Remo Rubio Springer':'remo-rubio-springer'
+  };
+  const own=document.body.dataset.candidatePage||'';
+  const path=location.pathname;
+  const prefix=(path.includes('/programm/')||path.includes('/kandidaten/'))?'../':'';
+  const walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,{acceptNode(node){
+    const p=node.parentElement;if(!p)return NodeFilter.FILTER_REJECT;
+    if(p.closest('a,script,style,textarea,option,button'))return NodeFilter.FILTER_REJECT;
+    return Object.keys(people).some(n=>node.nodeValue.includes(n)&&people[n]!==own)?NodeFilter.FILTER_ACCEPT:NodeFilter.FILTER_REJECT;
+  }});
+  const nodes=[];while(walker.nextNode())nodes.push(walker.currentNode);
+  nodes.forEach(node=>{
+    let parts=[node.nodeValue];
+    Object.entries(people).forEach(([name,slug])=>{
+      if(slug===own)return;
+      const next=[];
+      parts.forEach(part=>{
+        if(typeof part!=='string'){next.push(part);return;}
+        const chunks=part.split(name);
+        chunks.forEach((chunk,i)=>{
+          if(chunk)next.push(chunk);
+          if(i<chunks.length-1){const a=document.createElement('a');a.href=prefix+'kandidaten/'+slug+'.html';a.className='candidate-name-link';a.textContent=name;next.push(a);}
+        });
+      });
+      parts=next;
+    });
+    if(parts.some(x=>typeof x!=='string')){const frag=document.createDocumentFragment();parts.forEach(x=>frag.append(typeof x==='string'?document.createTextNode(x):x));node.replaceWith(frag);}
+  });
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',initCandidateProfileLinks,{once:true});else initCandidateProfileLinks();

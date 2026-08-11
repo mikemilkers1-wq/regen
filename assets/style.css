@@ -452,3 +452,42 @@ body{background:var(--party-white)}
   .mp-grid{grid-template-columns:1fr}
   .mp-photo{height:460px}
 }
+
+/* Verified real-person quotations */
+.profile-real-quote,.candidate-quote,.mp-quote{
+  margin:15px 0 18px;padding:0 0 0 15px;border-left:4px solid var(--party-red);
+  color:#343434;font:italic 1rem/1.55 Georgia,serif
+}
+.board-profile .profile-real-quote{margin:13px 0 14px;font-size:.95rem}
+.candidate-quote{color:#454545;margin:12px 0 16px}
+.mp-quote{font-size:.9rem;margin:11px 0 14px}
+
+
+/* Full-width diagonal texture fix */
+.side-chevrons{
+  width:100%;right:0;opacity:.28;clip-path:none;pointer-events:none;
+  background:repeating-linear-gradient(135deg,transparent 0 26px,rgba(214,219,226,.78) 26px 34px,transparent 34px 60px);
+  -webkit-mask-image:linear-gradient(90deg,#000 0%,rgba(0,0,0,.75) 32%,rgba(0,0,0,.22) 72%,transparent 100%);
+  mask-image:linear-gradient(90deg,#000 0%,rgba(0,0,0,.75) 32%,rgba(0,0,0,.22) 72%,transparent 100%);
+}
+@media(max-width:900px){.side-chevrons{display:block;opacity:.18}}
+
+/* Candidate detail pages */
+.candidate-name-link,.candidate-profile-link{color:inherit;text-decoration-color:rgba(221,1,1,.55);text-decoration-thickness:2px;text-underline-offset:4px;transition:.18s ease}
+.candidate-name-link:hover,.candidate-profile-link:hover{color:var(--party-red);text-decoration-color:var(--party-red)}
+.candidate-profile-button{display:inline-block;margin-top:16px;padding:9px 15px;background:var(--party-blue);color:#fff;font-weight:800;font-size:.82rem}
+.candidate-profile-button:hover{background:var(--party-red);color:#fff}
+.candidate-detail-hero{position:relative;overflow:hidden;background:var(--party-white);border-top:5px solid var(--party-blue);border-bottom:14px solid var(--party-red)}
+.candidate-detail-texture{position:absolute;inset:0;pointer-events:none;opacity:.32;background:repeating-linear-gradient(135deg,transparent 0 34px,rgba(214,219,226,.62) 34px 42px,transparent 42px 76px);-webkit-mask-image:linear-gradient(90deg,#000,rgba(0,0,0,.32) 60%,transparent);mask-image:linear-gradient(90deg,#000,rgba(0,0,0,.32) 60%,transparent)}
+.candidate-detail-grid{position:relative;display:grid;grid-template-columns:1.08fr .92fr;min-height:690px;align-items:stretch}
+.candidate-detail-copy{display:flex;flex-direction:column;justify-content:center;padding:70px 60px 70px 0;z-index:1}
+.candidate-back{width:max-content;margin-bottom:35px;color:var(--party-blue);font-weight:800}
+.candidate-detail-copy h1{margin:8px 0 18px;color:var(--party-blue);font:700 clamp(3.1rem,6vw,5.4rem)/.94 Georgia,serif}
+.candidate-detail-copy blockquote{margin:0 0 25px;padding:4px 0 4px 18px;border-left:5px solid var(--party-red);font:italic 1.23rem/1.55 Georgia,serif;max-width:760px}
+.candidate-lead{font-size:1.1rem;line-height:1.65;max-width:760px}
+.candidate-detail-portrait{min-height:690px;background:center top/cover;box-shadow:-28px 0 70px rgba(20,4,189,.1)}
+.candidate-focus-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}.candidate-focus-tags span{padding:8px 11px;background:var(--party-blue);color:#fff;font-size:.72rem;font-weight:900;letter-spacing:.04em}
+.candidate-bio-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:65px;align-items:start}.candidate-bio-grid h2{margin:6px 0 20px;color:var(--party-blue);font:700 clamp(2rem,4vw,3.25rem)/1 Georgia,serif}.candidate-bio-grid p{font-size:1.03rem;line-height:1.72}
+.candidate-fact-panel{display:grid;border-top:5px solid var(--party-blue);box-shadow:0 16px 50px rgba(20,4,189,.09);background:#fff}.candidate-fact-panel div{padding:19px 22px;border-bottom:1px solid #e7e7eb;display:grid;gap:4px}.candidate-fact-panel span{color:var(--party-red);font-size:.69rem;font-weight:900;letter-spacing:.09em;text-transform:uppercase}.candidate-fact-panel strong{font:700 1.05rem Georgia,serif;color:#252b3b}
+.candidate-campaign-section{background:#111827;color:#fff}.candidate-campaign-section .heading h2{color:#fff}.candidate-campaign-section .heading p{color:#d6dae4}.campaign-gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}.campaign-piece{margin:0;background:#fff;color:#252b3b;box-shadow:0 20px 55px rgba(0,0,0,.25);overflow:hidden}.campaign-piece img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}.campaign-piece figcaption{padding:18px 20px;display:grid;gap:4px}.campaign-piece figcaption strong{font:700 1.15rem Georgia,serif}.campaign-piece figcaption span{color:#687080;font-size:.88rem}.campaign-position-note{position:relative}
+@media(max-width:900px){.candidate-detail-grid,.candidate-bio-grid{grid-template-columns:1fr}.candidate-detail-copy{padding:55px 0 40px}.candidate-detail-portrait{min-height:520px}.campaign-gallery{grid-template-columns:1fr}.candidate-detail-texture{opacity:.2}}
